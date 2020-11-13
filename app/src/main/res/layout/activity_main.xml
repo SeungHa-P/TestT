@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="activity"
+            type="com.ssg.testt.MainActivity" />
+    </data>
+<com.ssg.testt.CusScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scroll"
+    android:background="#08000000"
+    tools:context=".MainActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:id="@+id/top_Const"
+    android:background="#ffffff"
+    android:paddingTop="20dp"
+    >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="ADCAPSULE SOFT"
+        android:textSize="20dp"
+        android:gravity="center_vertical"
+        android:background="#ffffff"
+        android:textStyle="bold"
+        android:layout_marginLeft="13dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn_qick"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/headTxt"
+        />
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/cart"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/headBtn"
+        android:id="@+id/btn_cart"
+
+        android:layout_marginRight="13dp"
+        android:background="#00000000"
+        />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintRight_toLeftOf="@+id/btn_cart"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/headBtn"
+        android:src="@drawable/qick"
+        android:layout_marginRight="10dp"
+        android:id="@+id/btn_qick"
+        />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:id="@+id/headBtn"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="통합검색"
+        android:drawableRight="@drawable/search_icon"
+        android:gravity="left|center_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/headTxt"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/top_Const"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/shop_name"
+        android:background="#FFFFFF"
+        android:id="@+id/headConst"
+
+        >
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:backgroundTint="#00000000"
+            android:text="-"
+            android:src="@drawable/back_btn"
+            android:textSize="20dp"
+            android:id="@+id/back"
+            />
+        <ImageView
+            android:id="@+id/benner"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/contents"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/headTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+
+            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/choice_const"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="0dp"
+                android:text="상세정보"
+                android:id="@+id/head_detail"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/head_review"
+                android:textColor="#000000"
+                android:layout_marginRight="20dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="0dp"
+                android:text="리뷰"
+                android:id="@+id/head_review"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/head_detail"
+                app:layout_constraintRight_toLeftOf="@+id/head_qna"
+                android:textColor="#000000"
+                android:layout_marginRight="20dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="Q\u0026A"
+                app:layout_constraintLeft_toRightOf="@+id/head_review"
+                android:id="@+id/head_qna"
+                app:layout_constraintRight_toLeftOf="@+id/head_alpha"
+                android:textColor="#000000"
+                android:layout_marginRight="20dp"
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_height="0dp"
+                    android:text="추천"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/head_qna"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:textColor="#000000"
+                    android:id="@+id/head_alpha"
+
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    <ImageView-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:src="@drawable/contents"-->
+<!--        android:id="@+id/benner"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/top_Const"-->
+<!--        app:layout_constraintDimensionRatio="1:1"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        />-->
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headConst"
+        android:text="adcapsule"
+        android:id="@+id/shop_name"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/shop_info"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shop_name"
+        android:layout_marginTop="2dp"
+        android:background="#ffffff"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textStyle="bold"
+
+            android:text="랑방 (향수) 랑방잔느 오 드 퍼퓸 50ml"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5%"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="50dp"
+            android:textColor="#FF0000"
+            android:id="@+id/sale_"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintLeft_toRightOf="@+id/sale_"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"
+            android:text="28,025원"
+            android:id="@+id/price_"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shop_info"
+        android:background="#ffffff"
+        android:layout_marginTop="2dp"
+        android:id="@+id/detail_info"
+        >
+        <include layout="@layout/shop_detail_info" android:id="@+id/include_detail_info"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/detail_info"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:id="@+id/markating_const"
+        >
+        <include layout="@layout/center_markating" android:id="@+id/center_markat"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="800dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/markating_const"
+        android:id="@+id/item_detail_const"
+        android:background="#ffffff"
+        >
+
+        <include android:id="@+id/item_info"   layout="@layout/item_detail" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="상세정보 펼처보기"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            />
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_detail_const"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:id="@+id/md_const"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MD공지"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toBottomOf="@+id/md_const"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="10dp"
+        android:id="@+id/logo_const"
+        android:background="#ffffff"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="고객리뷰"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toBottomOf="@+id/logo_const"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:id="@+id/qna_const"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q\u0026A"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/qna_const"
+        android:id="@+id/content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/large_text"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</com.ssg.testt.CusScrollView>
+    </layout>
