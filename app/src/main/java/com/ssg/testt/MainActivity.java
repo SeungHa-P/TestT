@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         binding.scroll.setQnaConst(binding.qnaConst);
         binding.scroll.setLogoConst(binding.logoConst);
 
+
         binding.itemInfo.itemInfoWeb.setWebViewClient(new WebViewClient());
         webSettings=binding.itemInfo.itemInfoWeb.getSettings();
         webSettings.setJavaScriptEnabled(true);

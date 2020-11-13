@@ -20,9 +20,61 @@ import android.widget.Toast;
 public class CusScrollView extends ScrollView implements ViewTreeObserver.OnGlobalLayoutListener {
 
 
-    private boolean anicheck = false;
+    private View topConst;
+    // 최 상단 ConstraintLayout
+    private View header;
+    // 스크롤시 따라 상단에 부착될 레이아웃
+    private View item;
+    // 줄어들고 늘어날 이미지
+    private View itemline;
+    //
+    private TextView headertitle;
+    // header 안의 내용 (이미지 다 줄어들고 나타날)
+    private TextView headDetail;
+    // header 안의 상세내용 TextView
+    private TextView headReview;
+    // header 안의 리뷰 TextView
+    private TextView headQna;
+    // header 안의 QNA TextView
+    private TextView headAlpha;
+    //  header 안의 추천 TextView
+    private View Choice;
+    // 상세,리뷰,QnA,추천 TextView 가 담아져있는 ConstrainLayout
+    private View HeadConst;
+    //
 
-    private int tTemp = 0;
+    private View itemDetailConst;
+    // WebView 상세 내용을 담을 ConstraintLayout
+    private View logoConst;
+    // 리뷰를 담을 ConstraintLayout
+    private View qnaConst;
+    // QnA 를 담을 ConstraintLayout
+
+
+    private float dencity;
+    // dp의 대한 pixel 값을 구하기 위한 디바이스 윈도우 비율 값?
+    private boolean scrollnext = true;
+    // 스크롤 방향을 얻기 위한 Flag
+    private boolean mlsHeaderSticky = false;
+    // header가 상단에 붙었는지 판단하기 위한 Flag
+    private boolean flagHeader = false;
+    // header의 제목이 나타낫는지 판단하기 위한 Flag
+
+
+    private boolean headimg = false;
+    // header의 이미지가 모두 최소화되고 위치 변경까지 완료됬는지를 판단하기 위한 Flag
+    private float mHeaderInitPosition = 0f;
+    // header의 이벤트가 실행하기 위한 포지션 (해더 포지션)
+    private float itemLinePosition = 0f;
+    //
+
+
+    private Animation fadein = AnimationUtils.loadAnimation(getContext(), R.anim.ani_fade_in);
+    // 헤더 제목을 Fade in 애니메이션
+
+
+
+
 
     public CusScrollView(Context context) {
         super(context, null, 0);
@@ -43,19 +95,7 @@ public class CusScrollView extends ScrollView implements ViewTreeObserver.OnGlob
 
     }
 
-    private float dencity;
-    private boolean scrollnext = true;
 
-
-    private boolean headimg = false;
-    private float mHeaderInitPosition = 0f;
-    private boolean mlsHeaderSticky = false;
-    private boolean flagHeader = false;
-
-    private float itemLinePosition = 0f;
-
-    private int scrollline;
-    private Animation fadein = AnimationUtils.loadAnimation(getContext(), R.anim.ani_fade_in);
 
 
     @Override
@@ -94,9 +134,7 @@ public class CusScrollView extends ScrollView implements ViewTreeObserver.OnGlob
             } else {
                 scrollnext = false;
             }
-            setScrollY(a + (int) distanceY+1);
-
-
+            setScrollY(a + (int) distanceY + 1);
 
 
             return true;
@@ -122,9 +160,6 @@ public class CusScrollView extends ScrollView implements ViewTreeObserver.OnGlob
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
         Log.d("scrollposition", " t : " + t + "\n oldt : " + oldt);
-
-
-
 
 
         int scrolly = t;
@@ -172,10 +207,7 @@ public class CusScrollView extends ScrollView implements ViewTreeObserver.OnGlob
         }
 
 
-
-
-
-        if(Choice.getVisibility() == View.VISIBLE) {
+        if (Choice.getVisibility() == View.VISIBLE) {
             if (t >= itemDetailConst.getTop() && t < logoConst.getTop()) {
                 chageHeadText(0);
             } else if (t >= logoConst.getTop() && t < qnaConst.getTop()) {
@@ -224,7 +256,7 @@ public class CusScrollView extends ScrollView implements ViewTreeObserver.OnGlob
             Log.d("Updown", "Up");
 
             //=========================================================================
-            if (scrolly < itemLinePosition-20 && item.getHeight() <= 1360 && item.getWidth() <= 1360) {
+            if (scrolly < itemLinePosition - 20 && item.getHeight() <= 1360 && item.getWidth() <= 1360) {
                 headimg = false;
                 header.setTranslationZ(0f);
                 if (item.getTranslationX() > 0) {
@@ -333,24 +365,7 @@ public class CusScrollView extends ScrollView implements ViewTreeObserver.OnGlob
         getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
 
-    private View topConst;
 
-    private View header;
-    private View item;
-    private View itemline;
-    private TextView headertitle;
-
-    private TextView headDetail;
-    private TextView headReview;
-    private TextView headQna;
-    private TextView headAlpha;
-    private View Choice;
-    private View HeadConst;
-
-    private View itemDetailConst;
-    private View logoConst;
-
-    private View qnaConst;
 
 
     public TextView getHeadAlpha() {
@@ -447,8 +462,6 @@ public class CusScrollView extends ScrollView implements ViewTreeObserver.OnGlob
 
     public void setItem(View item) {
         this.item = item;
-
-
     }
 
     @Override
@@ -468,9 +481,7 @@ public class CusScrollView extends ScrollView implements ViewTreeObserver.OnGlob
     public void setHeader(View header) {
         this.header = header;
 
-
     }
-
 
     public float getDencity() {
         return dencity;
@@ -489,22 +500,22 @@ public class CusScrollView extends ScrollView implements ViewTreeObserver.OnGlob
     }
 
     private void chageHeadText(int a) {
-        if(a ==0){
+        if (a == 0) {
             headDetail.setTextColor(Color.RED);
             headAlpha.setTextColor(Color.BLACK);
             headQna.setTextColor(Color.BLACK);
             headReview.setTextColor(Color.BLACK);
-        }else if(a == 1){
+        } else if (a == 1) {
             headDetail.setTextColor(Color.BLACK);
             headAlpha.setTextColor(Color.BLACK);
             headQna.setTextColor(Color.BLACK);
             headReview.setTextColor(Color.RED);
-        }else if(a==2){
+        } else if (a == 2) {
             headDetail.setTextColor(Color.BLACK);
             headAlpha.setTextColor(Color.BLACK);
             headQna.setTextColor(Color.RED);
             headReview.setTextColor(Color.BLACK);
-        }else if(a == 3){
+        } else if (a == 3) {
             headDetail.setTextColor(Color.BLACK);
             headAlpha.setTextColor(Color.RED);
             headQna.setTextColor(Color.BLACK);
